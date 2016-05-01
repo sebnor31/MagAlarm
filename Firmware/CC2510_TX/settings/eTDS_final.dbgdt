@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Debug-Log>
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1861</ColumnWidth1></Debug-Log>
+      <Build>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>1395</ColumnWidth1>
+        <ColumnWidth2>372</ColumnWidth2>
+        <ColumnWidth3>93</ColumnWidth3>
+      </Build>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>134</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        <col-names>
+          
+          
+        <item>Disassembly</item><item>_I0</item></col-names>
+        <col-widths>
+          
+          
+        <item>500</item><item>20</item></col-widths>
+        <DisasmHistory/>
+        
+        
+      <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><ShowCodeCoverage>1</ShowCodeCoverage><ShowInstrProfiling>1</ShowInstrProfiling></Disassembly>
+    <WATCH_1><expressions><item>SEN_OUT[0]</item><item/></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>100</item><item>150</item><item>100</item><item>100</item></col-widths></WATCH_1><Auto><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>100</item><item>150</item><item>100</item><item>100</item></col-widths></Auto></Static>
+    <Windows>
+      
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-15159-19532</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-14636-19542</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-25907-19535</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>eTDS_final</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd3><Tabs><Tab><Identity>TabID-17007-14789</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab><Tab><Identity>TabID-1554-14874</Identity><TabName>Auto</TabName><Factory>Auto</Factory></Tab></Tabs><SelectedTab>1</SelectedTab></Wnd3><Wnd4><Tabs><Tab><Identity>TabID-11734-15993</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd4></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\dma_config.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>36</YPos2><SelStart2>3136</SelStart2><SelEnd2>3136</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\include\magneticsensor.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>44</YPos2><SelStart2>2172</SelStart2><SelEnd2>2172</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\eTDS_4sensor.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>222</YPos2><SelStart2>6843</SelStart2><SelEnd2>6843</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\eTDS_TX.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>216</YPos2><SelStart2>6929</SelStart2><SelEnd2>6929</SelEnd2></Tab><ActiveTab>3</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\include\per_test_main.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>12</YPos2><SelStart2>943</SelStart2><SelEnd2>943</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\radio_config.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>150</YPos2><SelStart2>7398</SelStart2><SelEnd2>7398</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\include\LSM9DS1_Registers.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>144</YPos2><SelStart2>2717</SelStart2><SelEnd2>2717</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\include\hal_defines.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>72</YPos2><SelStart2>4586</SelStart2><SelEnd2>4586</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\include\ioCCxx10_bitdef.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>810</YPos2><SelStart2>33277</SelStart2><SelEnd2>33277</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\include\per_test_dma.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-050f3908><key>iaridepm.enu1</key></Toolbar-050f3908></Sizes></Row0><Row1><Sizes><Toolbar-0e870610><key>debuggergui.enu1</key></Toolbar-0e870610></Sizes></Row1><Row2><Sizes/></Row2></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>557</Bottom><Right>208</Right><x>-2</x><y>-2</y><xscreen>160</xscreen><yscreen>157</yscreen><sizeHorzCX>104167</sizeHorzCX><sizeHorzCY>201024</sizeHorzCY><sizeVertCX>136719</sizeVertCX><sizeVertCY>715749</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>557</Bottom><Right>373</Right><x>-2</x><y>-2</y><xscreen>160</xscreen><yscreen>157</yscreen><sizeHorzCX>104167</sizeHorzCX><sizeHorzCY>201024</sizeHorzCY><sizeVertCX>244141</sizeVertCX><sizeVertCY>715749</sizeVertCY></Rect></Wnd3></Sizes></Row0><Row1><Sizes><Wnd4><Rect><Top>-2</Top><Left>371</Left><Bottom>557</Bottom><Right>531</Right><x>371</x><y>-2</y><xscreen>160</xscreen><yscreen>157</yscreen><sizeHorzCX>104167</sizeHorzCX><sizeHorzCY>201024</sizeHorzCY><sizeVertCX>104167</sizeVertCX><sizeVertCY>715749</sizeVertCY></Rect></Wnd4></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>155</Bottom><Right>1538</Right><x>-2</x><y>-2</y><xscreen>1540</xscreen><yscreen>157</yscreen><sizeHorzCX>1002604</sizeHorzCX><sizeHorzCY>201024</sizeHorzCY><sizeVertCX>104167</sizeVertCX><sizeVertCY>201024</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+

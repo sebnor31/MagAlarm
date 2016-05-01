@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>930561294</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PC_Handshaking_rev.r51</file>
+      <file>$PROJ_DIR$\include\DAC_defines.h</file>
+      <file>$PROJ_DIR$\DAC.c</file>
+      <file>$TOOLKIT_DIR$\inc\ioCC2510.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Test_RF_RX.r51</file>
+      <file>$PROJ_DIR$\Test_RF_RX.c</file>
+      <file>$PROJ_DIR$\DAC_config.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PWC.r51</file>
+      <file>$PROJ_DIR$\UART_config.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\Test_RF_RX.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\DAC.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\UART_config.pbi</file>
+      <file>$PROJ_DIR$\dma_config.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PC_Handshaking.r51</file>
+      <file>$PROJ_DIR$\CC2510_RX_PWC.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\DAC_config.pbi</file>
+      <file>$PROJ_DIR$\CC2510_RX_PC_Handshaking.c</file>
+      <file>$PROJ_DIR$\radio_config.c</file>
+      <file>$PROJ_DIR$\include\hal_defines.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\CC2510_RX_PC.d51</file>
+      <file>$PROJ_DIR$\CC2510_RX_PC_Handshaking_rev.c</file>
+      <file>$PROJ_DIR$\CC2510_RX_PC_Handshaking_rev1.c</file>
+      <file>$TOOLKIT_DIR$\config\devices\Texas Instruments\lnk51ew_cc2510F32.xcl</file>
+      <file>$PROJ_DIR$\Debug\Obj\dma_config.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\dma_config.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PWC.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PWC.pbd</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PC_HS.pbd</file>
+      <file>$PROJ_DIR$\include\per_test_dma.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PC_Handshaking_rev.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\radio_config.r51</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl-pli-nlxd-1e16x01n.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\CC2510_RX_PC_Handshaking_rev1.r51</file>
+      <file>$PROJ_DIR$\Debug\Obj\DAC_config.r51</file>
+      <file>$PROJ_DIR$\include\per_test_main.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\radio_config.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\UART_config.r51</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\[ROOT_NODE]</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 19</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\DAC.c</name>
+      <outputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 10</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Test_RF_RX.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 9</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 34 28 18 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\DAC_config.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 15</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 33</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3 34 28 18 1</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 3 34 28 18 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\UART_config.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 11</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 36</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3 34 28 18</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 3 34 28 18</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\dma_config.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 24</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28 18 34 3</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 28 18 34 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC2510_RX_PWC.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 25</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 7</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34 28 18 3 1</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 34 28 18 3 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC2510_RX_PC_Handshaking.c</name>
+      <outputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 34 28 18 3 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\radio_config.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 30</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34 28 18 3</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 34 28 18 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\CC2510_RX_PC.d51</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 22 0 36 24 30 31</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC2510_RX_PC_Handshaking_rev.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 29</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 0</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34 28 18 3</file>
+        </tool>
+        <tool>
+          <name>ICC8051</name>
+          <file> 34 28 18 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CC2510_RX_PC_Handshaking_rev1.c</name>
+      <outputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC8051</name>
+          <file> 34 28 18 3 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Obj\CC2510_RX_PWC.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 25 15 11 23 35</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 19</file>
+        </tool>
+      </outputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+
