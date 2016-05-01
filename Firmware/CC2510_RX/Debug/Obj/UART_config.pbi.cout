@@ -1,14 +1,14 @@
-"D:\Dropbox\GATech\eTDS\eTDS__TX_RX_24_sensors_firmware_pack_Nov_1st_2015\Firmware_RX_24_sensors\UART_config.c"
+"C:\Users\MdNazmus\Documents\GitHub\MagAlarm\Firmware\CC2510_RX\UART_config.c"
 -std=c99
 -ferror-limit=100
 -I
-D:\Dropbox\GATech\eTDS\eTDS__TX_RX_24_sensors_firmware_pack_Nov_1st_2015\Firmware_RX_24_sensors\INCLUDE
+C:\Users\MdNazmus\Documents\GitHub\MagAlarm\Firmware\CC2510_RX\INCLUDE
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\8051\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\8051\inc\dlib\c
 -I
-D:\Dropbox\GATech\eTDS\eTDS__TX_RX_24_sensors_firmware_pack_Nov_1st_2015\Firmware_RX_24_sensors\INCLUDE
+C:\Users\MdNazmus\Documents\GitHub\MagAlarm\Firmware\CC2510_RX\INCLUDE
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
@@ -303,8 +303,8 @@ D:\Dropbox\GATech\eTDS\eTDS__TX_RX_24_sensors_firmware_pack_Nov_1st_2015\Firmwar
 -D__PLAIN_INT_BITFIELD_IS_SIGNED__=1
 -D__HAS_LOCATED_DECLARATION__=1
 -D__IAR_COMPILERBASE__=593409
--D__DATE__="Apr 27 2016"
--D__TIME__="13:44:37"
+-D__DATE__="May  1 2016"
+-D__TIME__="17:05:39"
 -D__STDC__=1
 -D__STDC_VERSION__=199901L
 -D__STDC_HOSTED__=1

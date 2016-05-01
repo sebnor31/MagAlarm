@@ -26,7 +26,7 @@
 
 
 /* Some adjustable settings */
-#define PACKET_LENGTH                54//42 //36//54//42//36//30//42//36//30//42//54           //54   for 24 sensors  // Payload length. Does not include
+#define PACKET_LENGTH                24 //54//42 //36//54//42//36//30//42//36//30//42//54           //54   for 24 sensors  // Payload length. Does not include
 // 1 length byte (prefixing payload,
 // containing this value) and 2
 // appended bytes CRC. Does include

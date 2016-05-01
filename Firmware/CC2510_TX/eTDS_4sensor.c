@@ -224,7 +224,7 @@ void GetSensorOutput(void)
   UINT8 j=0;
   UINT8 k=0;
   uint16 *p, *q, *r, *s, *v, *w, *x, *y, *t, *u, *z ;
-  UINT16 SEN_OUT[24];
+  UINT16 SEN_OUT[9];
   
     
      // delay_us(500);
@@ -241,7 +241,7 @@ void GetSensorOutput(void)
       SEN_OUT[k++]=q[1];
       SEN_OUT[k++]=q[2];
       
-      
+/*      
       r = mgtReadAcc(3);
       //delay_us(10);
       SEN_OUT[k++]=r[0];
@@ -280,6 +280,7 @@ void GetSensorOutput(void)
       SEN_OUT[k++]= y[0];
       SEN_OUT[k++]=y[1];
       SEN_OUT[k]=y[2];
+ */
  /*   
       t = ReadLSM9DS1(2,LSM9DS1_OUT_X_L_XL);                  // reading accelerometer
       //delay_us(10);
@@ -293,13 +294,13 @@ void GetSensorOutput(void)
       SEN_OUT[k++]= u[1];
       SEN_OUT[k]= u[2]; 
  
- /*     
+ */     
       z = ReadLSM9DS1(1,LSM9DS1_OUT_X_L_M);                   // reading LSM9D magnetometer
       //delay_us(10);
       SEN_OUT[k++]= z[0];
       SEN_OUT[k++]= z[1];
       SEN_OUT[k]= z[2]; 
- */     
+      
    
       
        

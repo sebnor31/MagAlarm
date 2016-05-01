@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SerialTest", "SerialTest\SerialTest.vcxproj", "{A1DDE8ED-16B0-49A7-ADC8-6A72AE93509B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1DDE8ED-16B0-49A7-ADC8-6A72AE93509B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A1DDE8ED-16B0-49A7-ADC8-6A72AE93509B}.Debug|Win32.Build.0 = Debug|Win32
+		{A1DDE8ED-16B0-49A7-ADC8-6A72AE93509B}.Release|Win32.ActiveCfg = Release|Win32
+		{A1DDE8ED-16B0-49A7-ADC8-6A72AE93509B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
