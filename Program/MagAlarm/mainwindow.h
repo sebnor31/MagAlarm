@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "packetreader.h"
+#include <QThread>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +19,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QThread pktThread;
+    PacketManager *packetMgr = 0;
 };
 
 #endif // MAINWINDOW_H

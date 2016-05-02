@@ -6,9 +6,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    packetMgr = new PacketManager();
+    packetMgr->moveToThread(&pktThread);
+
+    connect(&pktThread, SIGNAL(started()), packetMgr, SLOT(start()));
+    connect(&pktThread, SIGNAL(finished()), packetMgr, SLOT(deleteLater()), Qt::DirectConnection);
+
+    pktThread.start();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
+    pktThread.quit();
+    pktThread.wait();
 }

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    packetreader.cpp \
+    serialib.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    packetreader.h \
+    serialib.h
 
 FORMS    += mainwindow.ui
