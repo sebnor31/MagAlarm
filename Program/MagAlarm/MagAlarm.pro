@@ -4,21 +4,24 @@
 #
 #-------------------------------------------------
 
-QT       += core gui serialport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TARGET      = MagAlarm
+VERSION     = 1.0
+TEMPLATE    = app
 
-TARGET = MagAlarm
-TEMPLATE = app
 
+QT       += core gui serialport widgets printsupport
 
 SOURCES += main.cpp\
         mainwindow.cpp \
     packetreader.cpp \
-    serialib.cpp
+    serialib.cpp \
+    qcustomplot.cpp
 
 HEADERS  += mainwindow.h \
     packetreader.h \
-    serialib.h
+    serialib.h \
+    qcustomplot.h \
+    typedef.h
 
 FORMS    += mainwindow.ui

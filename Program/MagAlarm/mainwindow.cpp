@@ -13,8 +13,24 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&pktThread, SIGNAL(started()), packetMgr, SLOT(start()));
     connect(&pktThread, SIGNAL(finished()), packetMgr, SLOT(deleteLater()), Qt::DirectConnection);
 
+    connect(packetMgr, SIGNAL(batteryLevel(double)), this, SLOT(updateBatteryLevel(double)));
+
     pktThread.start();
 }
+
+
+
+void MainWindow::setSensorPlot()
+{
+    ui->sensorPlot->plotLayout()->clear();
+
+}
+
+void MainWindow::updateBatteryLevel(double batteryLevelVal)
+{
+    ui->batteryLevel->setValue(batteryLevelVal);
+}
+
 
 MainWindow::~MainWindow()
 {

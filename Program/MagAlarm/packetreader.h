@@ -7,6 +7,7 @@
 #include <QTimer>
 
 #include "serialib.h"
+#include "typedef.h"
 
 
 class PacketReader : public QObject
@@ -37,7 +38,7 @@ private:
     char bufferdata[22];
 
 signals:
-    void newPacket(QByteArray);
+    void newPacket(QVector<ushort> packetData);
 
 };
 
@@ -57,10 +58,10 @@ private:
 
 public slots:
     void start();
-    void processPacket(QByteArray rawPacket);
+    void processPacket(QVector<ushort> rawPacket);
 
 signals:
-    void batteryLevel(int);
+    void batteryLevel(double);
     void doorStatus(int);
 };
 

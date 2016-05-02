@@ -2,12 +2,14 @@
 #include <QSerialPortInfo>
 #include <QDebug>
 #include <QByteArray>
+#include <limits>
+
+/*********************************
+ * Packet Reader (low level)
+ *********************************/
 
 PacketReader::PacketReader(QObject *parent) : QObject(parent)
-{
-
-
-}
+{}
 
 void PacketReader::start()
 {
@@ -33,7 +35,6 @@ void PacketReader::start()
 
     rxPort = new serialib();
     int isOpen = rxPort->Open(serialRxInfo.portName().toLatin1(), 921600);
-
 
     if (isOpen != 1) {
         qDebug() << "ERROR: Receiver could not be opened -- Code: " << isOpen;
@@ -67,25 +68,27 @@ void PacketReader::connectToReceiver()
 void PacketReader::readPacket()
 {
     ushort bufferdataOut[15] = { 0 };
+    QVector<ushort> packetData;
 
     rxPort->Write(readPacketRequest, 6);
-
     rxPort->Read(bufferdata, RX_BUFFSIZE);
-
-    QString packetVals = "[ ";
 
     for (int x = 0; x < 9; x++)
     {
         bufferdataOut[x] = ((ushort)(bufferdata[x * 2 + 4] * 256) + (ushort)bufferdata[x * 2 + 5]);
-
-        packetVals += QString::number(bufferdataOut[x]) + ",";
+        packetData.append(bufferdataOut[x]);
     }
 
-    qDebug() << packetVals;
+    ushort counter = (ushort)(bufferdata[1] * 256) + (ushort)bufferdata[0];
+    ushort batteryLevel = (ushort)(bufferdata[3] * 256) + (ushort)bufferdata[2];
 
+    packetData.push_front(batteryLevel);
+    packetData.push_front(counter);
 
+//    QString packetVals = QString("Counter = %1  -  Battery = %2").arg(counter).arg(batteryLevel);
+//    qDebug() << packetVals;
 
-//    emit newPacket(array);
+    emit newPacket(packetData);
 }
 
 PacketReader::~PacketReader()
@@ -110,15 +113,20 @@ void PacketManager::start()
     packetReader->moveToThread(&pktReaderThread);
     connect(&pktReaderThread, SIGNAL(started()), packetReader, SLOT(start()));
     connect(&pktReaderThread, SIGNAL(finished()), packetReader, SLOT(deleteLater()), Qt::DirectConnection);
-    connect(packetReader, SIGNAL(newPacket(QByteArray)), this, SLOT(processPacket(QByteArray)));
+    connect(packetReader, SIGNAL(newPacket(QVector<ushort>)), this, SLOT(processPacket(QVector<ushort>)));
 
     pktReaderThread.start();
 }
 
 
-void PacketManager::processPacket(QByteArray rawPacket)
+void PacketManager::processPacket(QVector<ushort> rawPacket)
 {
-    qDebug() << "New Packet: " << rawPacket;
+
+    double batteryLevelVal = ( static_cast<double>(rawPacket.at(1)) / std::numeric_limits<ushort>::max() ) * 100.0;
+    emit batteryLevel(batteryLevelVal);
+
+    QString packetVals = QString("Counter = %1  -  Battery = %2").arg(rawPacket.at(0)).arg(batteryLevelVal);
+    qDebug() << packetVals;
 }
 
 PacketManager::~PacketManager()
