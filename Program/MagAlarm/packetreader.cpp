@@ -1,7 +1,6 @@
 #include "packetreader.h"
 #include <QSerialPortInfo>
 #include <QDebug>
-#include <limits>
 
 /*********************************
  * Packet Reader (low level)
@@ -76,7 +75,7 @@ void PacketReader::readPacket()
     packet.counter  = static_cast<uchar>(bufferdata[1]);
 
     // Get battery level
-    packet.battery  = static_cast<ushort>( ( static_cast<uchar>(bufferdata[3]) * 256 ) + static_cast<uchar>(bufferdata[2]);
+    packet.battery  = static_cast<ushort>( ( static_cast<uchar>(bufferdata[2]) * 256 ) + static_cast<uchar>(bufferdata[3]));
 
     // Get magnetic field values for reference sensor
     for (int x = 0; x < 3; x++)
@@ -131,8 +130,8 @@ void PacketManager::start()
 
 void PacketManager::processPacket(DataPacket rawPacket)
 {
-    // Convert battery absolute value to a percentage
-    double batteryLevelVal = ( static_cast<double>(rawPacket.battery) / std::numeric_limits<ushort>::max() ) * 100.0;
+    // Convert battery absolute value to a percentage (ADC is done in 10 bits => 1024 numerical value)
+    double batteryLevelVal = ( static_cast<double>(rawPacket.battery) / 1024.0 ) * 100.0;
     emit batteryLevel(batteryLevelVal);
 
     qDebug() << QString("Counter = %1  -  Battery = %2").arg(rawPacket.counter).arg(batteryLevelVal);
