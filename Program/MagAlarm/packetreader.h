@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QThread>
 #include <QTimer>
+#include <QTime>
 #include "serialib.h"
 #include "typedef.h"
 
@@ -28,6 +29,7 @@ private slots:
 private:
     serialib *rxPort;
     QTimer   *timer;
+    QTime    time;
 
     // Message to initialize connection between transmitter and usb receiver
     uchar readPacketRequest[6] = { 170, 170, 15, 255, 15, 255 };
@@ -60,6 +62,9 @@ public slots:
 signals:
     void batteryLevel(double);
     void doorStatus(int);
+    void refMagSig(double time, QVector<ushort> magField);
+    void sensor1MagSig(double time, QVector<ushort> magField);
+    void sensor2MagSig(double time, QVector<ushort> magField);
 };
 
 

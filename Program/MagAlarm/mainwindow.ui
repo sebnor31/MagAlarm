@@ -14,93 +14,82 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QSlider" name="doorStateSlider">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>230</y>
-      <width>22</width>
-      <height>160</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>-1</number>
-    </property>
-    <property name="maximum">
-     <number>1</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-    <property name="tickPosition">
-     <enum>QSlider::TicksAbove</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="doorStateLabel">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>190</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Door State</string>
-    </property>
-   </widget>
-   <widget class="QCustomPlot" name="sensorPlot" native="true">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>80</y>
-      <width>551</width>
-      <height>381</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="batteryLevel">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>200</y>
-      <width>21</width>
-      <height>241</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>24</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="batteryLevelLabel">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>160</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Battery (V)</string>
-    </property>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,5">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,9">
+      <item>
+       <widget class="QLabel" name="batteryLevelLabel">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Battery (%)</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="batteryLevel">
+        <property name="value">
+         <number>24</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,9">
+      <item>
+       <widget class="QLabel" name="doorStateLabel">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Door State</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="doorStateSlider">
+        <property name="minimum">
+         <number>-1</number>
+        </property>
+        <property name="maximum">
+         <number>1</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::TicksAbove</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QCustomPlot" name="sensorPlot" native="true">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

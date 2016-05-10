@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "packetreader.h"
 #include <QThread>
+#include "packetreader.h"
 #include "qcustomplot.h"
 
 namespace Ui {
@@ -31,8 +31,8 @@ private:
     };
 
     SensorGraph refGraph;
-    SensorGraph sensor1Graph;
-    SensorGraph sensor2Graph;
+    SensorGraph sensorGraph1;
+    SensorGraph sensorGraph2;
 
 /**************
  * Methods
@@ -44,11 +44,13 @@ public:
 
 private:
     void setSensorPlot();
+    void closeEvent(QCloseEvent *event);
 
 private slots:
     void updateBatteryLevel(double batteryLevelVal);
-
-
+    void updateRefGraph(double time, QVector<ushort> magField);
+    void updateSensorGraph1(double time, QVector<ushort> magField);
+    void updateSensorGraph2(double time, QVector<ushort> magField);
 };
 
 #endif // MAINWINDOW_H

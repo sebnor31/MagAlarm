@@ -41,7 +41,7 @@ void PacketReader::start()
 
     connectToReceiver();
 
-    const int readPacketDelay = 500;     // Delay in msec
+    const int readPacketDelay = 10;     // Delay in msec
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(readPacket()));
     timer->start(readPacketDelay);
@@ -55,12 +55,13 @@ void PacketReader::connectToReceiver()
     char buffer[1] = {0};
 
     while (numBytesRead == 0) {
-
         rxPort->Write(connectRequest, 6);
         numBytesRead = rxPort->Read(buffer, 1);
     }
 
     qDebug() << QString("PASS: Receiver is CONNECTED");
+
+    time.start();
 }
 
 void PacketReader::readPacket()
@@ -70,6 +71,9 @@ void PacketReader::readPacket()
     // Read raw data from receiver
     rxPort->Write(readPacketRequest, 6);
     rxPort->Read(bufferdata, RX_BUFFSIZE);
+
+    // Set time stamp
+    packet.time = (time.elapsed() / 1000.0);
 
     // Get counter value
     packet.counter  = static_cast<uchar>(bufferdata[1]);
@@ -81,7 +85,7 @@ void PacketReader::readPacket()
     for (int x = 0; x < 3; x++)
     {
         ushort magAxis = ((ushort)(bufferdata[x * 2 + 4] * 256) + (ushort)bufferdata[x * 2 + 5]);
-        packet.refMag.append(magAxis);
+        packet.sensorMag2.append(magAxis);
     }
 
     // Get magnetic field values for sensor 1
@@ -95,7 +99,7 @@ void PacketReader::readPacket()
     for (int x = 0; x < 3; x++)
     {
         ushort magAxis = ((ushort)(bufferdata[x * 2 + 16] * 256) + (ushort)bufferdata[x * 2 + 17]);
-        packet.sensorMag2.append(magAxis);
+        packet.refMag.append(magAxis);
     }
 
     emit newPacket(packet);
@@ -134,12 +138,16 @@ void PacketManager::processPacket(DataPacket rawPacket)
     double batteryLevelVal = ( static_cast<double>(rawPacket.battery) / 1024.0 ) * 100.0;
     emit batteryLevel(batteryLevelVal);
 
-    qDebug() << QString("Counter = %1  -  Battery = %2").arg(rawPacket.counter).arg(batteryLevelVal);
+    emit refMagSig(rawPacket.time, rawPacket.refMag);
+    emit sensor1MagSig(rawPacket.time, rawPacket.sensorMag1);
+    emit sensor2MagSig(rawPacket.time, rawPacket.sensorMag2);
+
+//    qDebug() << QString("Counter = %1  -  Battery = %2").arg(rawPacket.counter).arg(batteryLevelVal);
 }
 
 PacketManager::~PacketManager()
 {
     pktReaderThread.quit();
-    pktReaderThread.wait();
+//    pktReaderThread.wait(1000);
     qDebug() << "-- Packet Manager Destroyed --";
 }
