@@ -19,6 +19,7 @@ public:
 
 public slots:
     void start();
+    void updateSamplingFreq(int msec);
 
 private:
     void connectToReceiver();
@@ -32,14 +33,16 @@ private:
     QTime    time;
 
     // Message to initialize connection between transmitter and usb receiver
-    uchar readPacketRequest[6] = { 170, 170, 15, 255, 15, 255 };
+    uchar readPacketRequest[6];
 
     // Data packet parameters
     const int RX_BUFFSIZE = 22;
     char bufferdata[22];
 
 signals:
+    void connectedSig(bool);
     void newPacket(DataPacket dataPacket);
+    void samplingFreq(int msec);
 };
 
 
@@ -58,13 +61,17 @@ private:
 public slots:
     void start();
     void processPacket(DataPacket rawPacket);
+    void samplingFreq(int msec);
 
 signals:
+    void connectedSig(bool);
     void batteryLevel(double);
     void doorStatus(int);
+    void magFieldData(DataPacket packet);
     void refMagSig(double time, QVector<ushort> magField);
     void sensor1MagSig(double time, QVector<ushort> magField);
     void sensor2MagSig(double time, QVector<ushort> magField);
+    void updateSamplingFreq(int msec);
 };
 
 

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDateTime>
+#include <QTimer>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,20 +10,48 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connStatusChanged(false); // Set initial device status to not connected
+
     packetMgr = new PacketManager();
     packetMgr->moveToThread(&pktThread);
 
     connect(&pktThread, SIGNAL(started()), packetMgr, SLOT(start()));
     connect(&pktThread, SIGNAL(finished()), packetMgr, SLOT(deleteLater()), Qt::DirectConnection);
 
+    connect(packetMgr, SIGNAL(connectedSig(bool)), this, SLOT(connStatusChanged(bool)));
     connect(packetMgr, SIGNAL(batteryLevel(double)), this, SLOT(updateBatteryLevel(double)));
-    connect(packetMgr, SIGNAL(refMagSig(double, QVector<ushort>)), this, SLOT(updateRefGraph(double, QVector<ushort>)));
-    connect(packetMgr, SIGNAL(sensor1MagSig(double, QVector<ushort>)), this, SLOT(updateSensorGraph1(double, QVector<ushort>)));
-    connect(packetMgr, SIGNAL(sensor2MagSig(double, QVector<ushort>)), this, SLOT(updateSensorGraph2(double, QVector<ushort>)));
+    connect(packetMgr, SIGNAL(magFieldData(DataPacket)), this, SLOT(updateSensorPlot(DataPacket)));
+    connect(this, SIGNAL(updateSamplingFreq(int)), packetMgr, SLOT(samplingFreq(int)));
 
     pktThread.start();
 
     setSensorPlot();
+}
+
+
+void MainWindow::on_calibButton_clicked()
+{
+    emit updateSamplingFreq(10);    // Set sampling freq to 100 Hz (10 ms)
+
+    // User selects the file where raw mag data will be saved
+    QString rawMagFilePath = QFileDialog::getSaveFileName(this, "Save Calibration Data", "C:/", "Text Files (*.txt)");
+    calib = new Calibration(rawMagFilePath, this);
+    connect(packetMgr, SIGNAL(magFieldData(DataPacket)), calib, SLOT(saveRawMagField(DataPacket)));
+
+    // Perform saving for a fix duration
+    int calibDurationMs = 5000;
+    QTimer::singleShot(calibDurationMs, this, SLOT(calibFinished()));
+}
+
+void MainWindow::calibFinished()
+{
+    // Perfrom closing and cleanup of calibration
+    disconnect(packetMgr, SIGNAL(magFieldData(DataPacket)), calib, SLOT(saveRawMagField(DataPacket)));
+    calib->stopSaving();
+    delete calib;
+
+    // Reset sampling freq to 1 Hz (1000 ms)
+    emit updateSamplingFreq(1000);
 }
 
 /************************************
@@ -88,29 +118,19 @@ void MainWindow::setSensorPlot()
     sensorGraph2.bz->setPen(QPen(Qt::green));
 }
 
-void MainWindow::updateRefGraph(double time, QVector<ushort> magField)
+void MainWindow::updateSensorPlot(DataPacket packet)
 {
-    refGraph.bx->addData(time, magField.at(0));
-    refGraph.by->addData(time, magField.at(1));
-    refGraph.bz->addData(time, magField.at(2));
+    refGraph.bx->addData(packet.time, packet.refMag.at(0));
+    refGraph.by->addData(packet.time, packet.refMag.at(1));
+    refGraph.bz->addData(packet.time, packet.refMag.at(2));
 
-//    ui->sensorPlot->replot();
-}
+    sensorGraph1.bx->addData(packet.time, packet.sensorMag1.at(0));
+    sensorGraph1.by->addData(packet.time, packet.sensorMag1.at(1));
+    sensorGraph1.bz->addData(packet.time, packet.sensorMag1.at(2));
 
-void MainWindow::updateSensorGraph1(double time, QVector<ushort> magField)
-{
-    sensorGraph1.bx->addData(time, magField.at(0));
-    sensorGraph1.by->addData(time, magField.at(1));
-    sensorGraph1.bz->addData(time, magField.at(2));
-
-//    ui->sensorPlot->replot();
-}
-
-void MainWindow::updateSensorGraph2(double time, QVector<ushort> magField)
-{
-    sensorGraph2.bx->addData(time, magField.at(0));
-    sensorGraph2.by->addData(time, magField.at(1));
-    sensorGraph2.bz->addData(time, magField.at(2));
+    sensorGraph2.bx->addData(packet.time, packet.sensorMag2.at(0));
+    sensorGraph2.by->addData(packet.time, packet.sensorMag2.at(1));
+    sensorGraph2.bz->addData(packet.time, packet.sensorMag2.at(2));
 
     ui->sensorPlot->replot();
 }
@@ -118,6 +138,15 @@ void MainWindow::updateSensorGraph2(double time, QVector<ushort> magField)
 /************************************
  * Other
  **************************************/
+void MainWindow::connStatusChanged(bool connected)
+{
+    QString statusColor = connected ? "green" : "red";
+    ui->connStatus->setStyleSheet( QString("background : %1; color : white").arg(statusColor) );
+
+    QString text = connected ? "Connected" : "Not Connected";
+    ui->connStatus->setText(text);
+}
+
 void MainWindow::updateBatteryLevel(double batteryLevelVal)
 {
     ui->batteryLevel->setValue(batteryLevelVal);
@@ -132,6 +161,8 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     event->accept();
 }
 
+
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -139,3 +170,5 @@ MainWindow::~MainWindow()
     pktThread.quit();
     pktThread.wait();
 }
+
+

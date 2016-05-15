@@ -7,7 +7,15 @@
  *********************************/
 
 PacketReader::PacketReader(QObject *parent) : QObject(parent)
-{}
+{
+    readPacketRequest[0] = 170;
+    readPacketRequest[1] = 170;
+    readPacketRequest[2] = 15;
+    readPacketRequest[3] = 255;
+    readPacketRequest[4] = 15;
+    readPacketRequest[5] = 255;
+
+}
 
 void PacketReader::start()
 {
@@ -41,10 +49,17 @@ void PacketReader::start()
 
     connectToReceiver();
 
-    const int readPacketDelay = 10;     // Delay in msec
+    const int readPacketDelay = 1000;     // Delay in msec
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(readPacket()));
-    timer->start(readPacketDelay);
+    connect(this, SIGNAL(samplingFreq(int)), timer, SLOT(start(int)));
+
+    emit samplingFreq(readPacketDelay);
+}
+
+void PacketReader::updateSamplingFreq(int msec)
+{
+    emit samplingFreq(msec);
 }
 
 void PacketReader::connectToReceiver()
@@ -59,6 +74,7 @@ void PacketReader::connectToReceiver()
         numBytesRead = rxPort->Read(buffer, 1);
     }
 
+    emit connectedSig(true);
     qDebug() << QString("PASS: Receiver is CONNECTED");
 
     time.start();
@@ -127,7 +143,10 @@ void PacketManager::start()
     packetReader->moveToThread(&pktReaderThread);
     connect(&pktReaderThread, SIGNAL(started()), packetReader, SLOT(start()));
     connect(&pktReaderThread, SIGNAL(finished()), packetReader, SLOT(deleteLater()), Qt::DirectConnection);
+
+    connect(packetReader, SIGNAL(connectedSig(bool)), this, SIGNAL(connectedSig(bool)));
     connect(packetReader, SIGNAL(newPacket(DataPacket)), this, SLOT(processPacket(DataPacket)));
+    connect(this, SIGNAL(updateSamplingFreq(int)), packetReader, SLOT(updateSamplingFreq(int)), Qt::DirectConnection);
 
     pktReaderThread.start();
 }
@@ -138,11 +157,18 @@ void PacketManager::processPacket(DataPacket rawPacket)
     double batteryLevelVal = ( static_cast<double>(rawPacket.battery) / 1024.0 ) * 100.0;
     emit batteryLevel(batteryLevelVal);
 
-    emit refMagSig(rawPacket.time, rawPacket.refMag);
-    emit sensor1MagSig(rawPacket.time, rawPacket.sensorMag1);
-    emit sensor2MagSig(rawPacket.time, rawPacket.sensorMag2);
+//    emit refMagSig(rawPacket.time, rawPacket.refMag);
+//    emit sensor1MagSig(rawPacket.time, rawPacket.sensorMag1);
+//    emit sensor2MagSig(rawPacket.time, rawPacket.sensorMag2);
 
-//    qDebug() << QString("Counter = %1  -  Battery = %2").arg(rawPacket.counter).arg(batteryLevelVal);
+    emit magFieldData(rawPacket);
+
+    //    qDebug() << QString("Counter = %1  -  Battery = %2").arg(rawPacket.counter).arg(batteryLevelVal);
+}
+
+void PacketManager::samplingFreq(int msec)
+{
+    emit updateSamplingFreq(msec);
 }
 
 PacketManager::~PacketManager()

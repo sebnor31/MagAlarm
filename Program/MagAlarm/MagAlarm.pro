@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     packetreader.cpp \
     serialib.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    calibration.cpp
 
 HEADERS  += mainwindow.h \
     packetreader.h \
     serialib.h \
     qcustomplot.h \
-    typedef.h
+    typedef.h \
+    calibration.h
 
 FORMS    += mainwindow.ui
